@@ -33,6 +33,24 @@ public class List<T> {
 
     //metodos
 
+    public boolean isEmpty() {
+        return raiz == null;
+    }
+
+    public void add(T data) {
+        Node<T> nuevo = new Node<T>(data);
+        if (isEmpty()) {
+            raiz = nuevo;
+        } else {
+            Node<T> aux = raiz;
+            while (aux.getNextNode() != null) {
+                aux = aux.getNextNode();
+            }
+            aux.setNextNode(nuevo);
+        }
+        tamaño++;
+    }
+
     public Node<T> get(int indice){
         Node<T> aux = raiz;
         for(int i = 0; i < indice; i++){
@@ -52,4 +70,5 @@ public class List<T> {
             tamaño--;
         }
     }
+
 }
