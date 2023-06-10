@@ -71,4 +71,31 @@ public class List<T> {
         }
     }
 
+    //peores casos añade automaticamente los peores casos a la lista
+    public void peoresCasos(int n){
+        for(int i = n; i >= n ; i--){
+            this.add((T) Integer.valueOf(i));
+        }
+    }
+
+    //Insertion Sort de metodos genericos
+    public long insertionSort(){
+        Node<T> aux = raiz;
+        Node<T> aux2 = raiz.getNextNode();
+        long nano_startTime = System.nanoTime();
+        while(aux2 != null){
+            if(aux.getData().toString().compareTo(aux2.getData().toString()) > 0){
+                T temp = aux.getData();
+                aux.setData(aux2.getData());
+                aux2.setData(temp);
+                aux = raiz;
+                aux2 = raiz.getNextNode();
+            }else{
+                aux = aux.getNextNode();
+                aux2 = aux2.getNextNode();
+            }
+        }
+        long nano_endTime = System.nanoTime();
+        return nano_endTime - nano_startTime;
+    }
 }
